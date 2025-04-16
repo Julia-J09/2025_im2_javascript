@@ -17,3 +17,32 @@
 * diese Anleitung zur Hilfe (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date?retiredLocale=de)
 * oder arbeite mit KI.
 * */
+
+
+
+// Benutzer:in gibt Geburtsdatum ein
+let geburtsdatumString = prompt("Gib dein Geburtsdatum ein (YYYY-MM-DD):");
+
+// Geburtsdatum in ein Date-Objekt umwandeln
+let geburtsdatum = new Date(geburtsdatumString);
+let heute = new Date();
+
+// Alter berechnen
+let alter = heute.getFullYear() - geburtsdatum.getFullYear();
+let m = heute.getMonth() - geburtsdatum.getMonth();
+if (m < 0 || (m === 0 && heute.getDate() < geburtsdatum.getDate())) {
+  alter--;
+}
+
+// Funktion zur Altersprüfung
+function checkAge(alter) {
+  if (alter < 16) {
+    console.log("Du bist zu jung um Alkohol zu kaufen.");
+  } else if (alter < 18) {
+    console.log("Du bist zu jung für Schnaps.");
+  } else {
+    console.log("Yeah, volljährig - kauf was du willst.");
+  }
+}
+
+checkAge(alter);
